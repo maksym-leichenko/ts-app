@@ -1,4 +1,4 @@
-import compact from "./compact";
+import compact from "../compact";
 
 describe('compact', () => {
   it('should return an array with all falsey values removed', () => {

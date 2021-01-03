@@ -1,4 +1,4 @@
-import differenceBy from "./differenceBy";
+import differenceBy from "../differenceBy";
 
 describe('differenceBy', () => {
 it('should return new array without filtered values, using iteratee function', () => {

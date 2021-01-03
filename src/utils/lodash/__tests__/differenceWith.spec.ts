@@ -1,4 +1,4 @@
-import differenceWith from "./differenceWith";
+import differenceWith from "../differenceWith";
 import _ from 'lodash';
 
 describe('differenceWith', () => {

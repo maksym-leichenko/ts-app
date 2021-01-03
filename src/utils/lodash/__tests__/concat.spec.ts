@@ -1,4 +1,4 @@
-import concat from './concat';
+import concat from '../concat';
 
 describe('concat', () => {
   it('should return a new array concatenating array with any additional arrays and/or values', () => {
