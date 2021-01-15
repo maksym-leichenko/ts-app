@@ -1,4 +1,4 @@
-name: CI
+name: CI | run tests
 on: push
 jobs:
   build:
@@ -9,6 +9,3 @@ jobs:
         run: yarn
       - name: Run tests
         run: yarn test
-      - uses: raulanatol/jest-coverage-comment-action@v1.0.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}'
