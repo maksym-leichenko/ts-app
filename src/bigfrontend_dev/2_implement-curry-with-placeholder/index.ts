@@ -4,13 +4,21 @@ type TCurry = {
 };
 
 const curry: TCurry = function (fn: Function) {
-  const curried = function (this: any, ...args: []) {
-    const filteredArgs: any[] = args.filter((arg) => arg !== curry.placeholder);
-    if (filteredArgs.length >= fn.length) {
-      return fn.call(this, ...filteredArgs);
+  const curried = function (this: any, ...argsRow: []) {
+    const args = argsRow.slice(0, fn.length);
+
+    if (args.length === fn.length && !args.includes(curry.placeholder)) {
+      return fn.call(this, ...args);
     }
-    return (...args2: []) => curried.call(this, ...filteredArgs, ...args2);
+
+    return (...args2: []) => {
+      const mergedArgs: any[] = args.map((arg) => {
+        return arg === curry.placeholder && args2.length ? args2.shift() : arg;
+      });
+      return curried.call(this, ...mergedArgs, ...args2);
+    };
   };
+
   return curried;
 };
 curry.placeholder = '_';
