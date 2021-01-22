@@ -1,8 +1,8 @@
-const throttle = function (func, wait) {
+const throttle = function (func: Function, wait: number) {
   let isThrottled = false;
-  let callback = null;
+  let callback: Function | null = null;
 
-  return function (...args) {
+  return function (this: any, ...args: any[]) {
     if (isThrottled) {
       callback = func.bind(this, ...args);
       return;
